@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .tagline {
+      font-size: 28px;
+      font-weight: 600;
+      color: #2f3b43;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .word {
+      opacity: 0;
+      display: inline-block;
+      animation: fadeSequence 6s infinite;
+    }
+
+    .word:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .word:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .word:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @keyframes fadeSequence {
+      0% {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      70% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      90% {
+        opacity: 0;
+        transform: translateY(-3px);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tagline">
+    <span class="word">Learning</span>
+    <span class="word">&nbsp;Through&nbsp;</span>
+    <span class="word">Creativity</span>
+  </div>
+</body>
+</html>

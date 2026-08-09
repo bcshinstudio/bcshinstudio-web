@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <span id="counter">Visitors: ...</span>
+
+  <script>
+    const API_URL =
+      'https://script.google.com/macros/s/AKfycbxW7au4Zb2wL2iLtOZdy_iLq12JhazqTkTa0e2cKHoLDpLYd2ha9p7dScg38YNTdK5WfA/exec';
+
+    const today = new Date().toISOString().slice(0, 10);
+    const visitorKey = 'bcShinStudioLastVisit';
+
+    const lastVisit = localStorage.getItem(visitorKey);
+
+    const url = lastVisit === today
+      ? API_URL
+      : API_URL + '?action=visit';
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('counter').textContent =
+          'Visitors: ' + data.count.toLocaleString();
+
+        if (lastVisit !== today) {
+          localStorage.setItem(visitorKey, today);
+        }
+      })
+      .catch(() => {
+        document.getElementById('counter').textContent = 'Visitors';
+      });
+  </script>
+</body>
+</html>
